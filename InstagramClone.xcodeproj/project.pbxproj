@@ -18,6 +18,7 @@
 		B4ECD976200CE0110013C63C /* PostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4ECD975200CE0110013C63C /* PostVC.swift */; };
 		B4ECD978200CE01C0013C63C /* ActivityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4ECD977200CE01C0013C63C /* ActivityVC.swift */; };
 		B4ECD97A200CE0260013C63C /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4ECD979200CE0260013C63C /* ProfileVC.swift */; };
+		B4ECD97C200D17E10013C63C /* Start.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4ECD97B200D17E10013C63C /* Start.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		B4ECD975200CE0110013C63C /* PostVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostVC.swift; sourceTree = "<group>"; };
 		B4ECD977200CE01C0013C63C /* ActivityVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityVC.swift; sourceTree = "<group>"; };
 		B4ECD979200CE0260013C63C /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		B4ECD97B200D17E10013C63C /* Start.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Start.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 				B4B3CC84200C44C900C63BAC /* View */,
 				B4B3CC83200C44C000C63BAC /* Controller */,
 				B4B3CC71200C449500C63BAC /* AppDelegate.swift */,
+				B4ECD97B200D17E10013C63C /* Start.storyboard */,
 				B4B3CC75200C449500C63BAC /* Main.storyboard */,
 				B4B3CC78200C449500C63BAC /* Assets.xcassets */,
 				B4B3CC7A200C449500C63BAC /* LaunchScreen.storyboard */,
@@ -190,6 +193,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B4B3CC7C200C449500C63BAC /* LaunchScreen.storyboard in Resources */,
+				B4ECD97C200D17E10013C63C /* Start.storyboard in Resources */,
 				B4B3CC79200C449500C63BAC /* Assets.xcassets in Resources */,
 				B4B3CC77200C449500C63BAC /* Main.storyboard in Resources */,
 			);
