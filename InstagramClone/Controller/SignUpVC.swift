@@ -27,13 +27,19 @@ class SignUpVC: UIViewController {
     @IBAction func signupPressed(_ sender: Any) {
         guard let email = emailTextField.text, emailTextField.text != "" else {return}
         guard let password = passWordTextField.text, passWordTextField.text != "" else {return}
+        guard let username = usernameTextfield.text, usernameTextfield.text != "" else {return}
         
         Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
             if error != nil {
-                print(error?.localizedDescription)
+                print(error!.localizedDescription)
                 return
             }else {
-                print(user)
+                DataService.instance.adduserToFirebase(uid: (user?.uid)!, username: username, email: email, userAdded: { (Done) in
+                    if Done {
+                        //perform segue
+                    }
+                })
+                
             }
         }
     }//end sign up pressed
