@@ -11,6 +11,8 @@
 		B4B3CC77200C449500C63BAC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4B3CC75200C449500C63BAC /* Main.storyboard */; };
 		B4B3CC79200C449500C63BAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4B3CC78200C449500C63BAC /* Assets.xcassets */; };
 		B4B3CC7C200C449500C63BAC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4B3CC7A200C449500C63BAC /* LaunchScreen.storyboard */; };
+		B4ECD96E200CD5E60013C63C /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4ECD96D200CD5E60013C63C /* LoginVC.swift */; };
+		B4ECD970200CD5FC0013C63C /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4ECD96F200CD5FC0013C63C /* SignUpVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +22,8 @@
 		B4B3CC78200C449500C63BAC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B4B3CC7B200C449500C63BAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B4B3CC7D200C449500C63BAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B4ECD96D200CD5E60013C63C /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		B4ECD96F200CD5FC0013C63C /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +74,8 @@
 		B4B3CC83200C44C000C63BAC /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				B4ECD96D200CD5E60013C63C /* LoginVC.swift */,
+				B4ECD96F200CD5FC0013C63C /* SignUpVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -181,6 +187,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4ECD96E200CD5E60013C63C /* LoginVC.swift in Sources */,
+				B4ECD970200CD5FC0013C63C /* SignUpVC.swift in Sources */,
 				B4B3CC72200C449500C63BAC /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
