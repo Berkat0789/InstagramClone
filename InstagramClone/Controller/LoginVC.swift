@@ -9,7 +9,10 @@
 import UIKit
 
 class LoginVC: UIViewController {
-
+//--Outlets
+    @IBOutlet weak var emailtextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
