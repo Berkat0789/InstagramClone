@@ -13,7 +13,6 @@ class DiscoverVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = #colorLiteral(red: 0.937254902, green: 0.2549019608, blue: 0.2588235294, alpha: 1)
     }
 
     override func didReceiveMemoryWarning() {

@@ -14,7 +14,6 @@ class ProfileVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = #colorLiteral(red: 0.5810584426, green: 0.1285524964, blue: 0.5745313764, alpha: 1)
     }
 
     override func didReceiveMemoryWarning() {
