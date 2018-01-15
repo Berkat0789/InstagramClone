@@ -19,6 +19,11 @@
 		B4ECD978200CE01C0013C63C /* ActivityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4ECD977200CE01C0013C63C /* ActivityVC.swift */; };
 		B4ECD97A200CE0260013C63C /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4ECD979200CE0260013C63C /* ProfileVC.swift */; };
 		B4ECD97C200D17E10013C63C /* Start.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4ECD97B200D17E10013C63C /* Start.storyboard */; };
+		B4ECD97E200D1B380013C63C /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4ECD97D200D1B380013C63C /* Home.storyboard */; };
+		B4ECD981200D1B7E0013C63C /* Camera.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4ECD97F200D1B7E0013C63C /* Camera.storyboard */; };
+		B4ECD983200D1BBA0013C63C /* Discover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4ECD982200D1BBA0013C63C /* Discover.storyboard */; };
+		B4ECD985200D1BF60013C63C /* Activity.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4ECD984200D1BF60013C63C /* Activity.storyboard */; };
+		B4ECD988200D1C270013C63C /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4ECD986200D1C270013C63C /* Profile.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +41,11 @@
 		B4ECD977200CE01C0013C63C /* ActivityVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityVC.swift; sourceTree = "<group>"; };
 		B4ECD979200CE0260013C63C /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		B4ECD97B200D17E10013C63C /* Start.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Start.storyboard; sourceTree = "<group>"; };
+		B4ECD97D200D1B380013C63C /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		B4ECD980200D1B7E0013C63C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = InstagramClone/Base.lproj/Camera.storyboard; sourceTree = "<group>"; };
+		B4ECD982200D1BBA0013C63C /* Discover.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Discover.storyboard; sourceTree = "<group>"; };
+		B4ECD984200D1BF60013C63C /* Activity.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Activity.storyboard; sourceTree = "<group>"; };
+		B4ECD987200D1C270013C63C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = InstagramClone/Base.lproj/Profile.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +87,11 @@
 				B4B3CC71200C449500C63BAC /* AppDelegate.swift */,
 				B4ECD97B200D17E10013C63C /* Start.storyboard */,
 				B4B3CC75200C449500C63BAC /* Main.storyboard */,
+				B4ECD97D200D1B380013C63C /* Home.storyboard */,
+				B4ECD97F200D1B7E0013C63C /* Camera.storyboard */,
+				B4ECD982200D1BBA0013C63C /* Discover.storyboard */,
+				B4ECD984200D1BF60013C63C /* Activity.storyboard */,
+				B4ECD986200D1C270013C63C /* Profile.storyboard */,
 				B4B3CC78200C449500C63BAC /* Assets.xcassets */,
 				B4B3CC7A200C449500C63BAC /* LaunchScreen.storyboard */,
 				B4B3CC7D200C449500C63BAC /* Info.plist */,
@@ -193,9 +208,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				B4B3CC7C200C449500C63BAC /* LaunchScreen.storyboard in Resources */,
+				B4ECD981200D1B7E0013C63C /* Camera.storyboard in Resources */,
+				B4ECD97E200D1B380013C63C /* Home.storyboard in Resources */,
 				B4ECD97C200D17E10013C63C /* Start.storyboard in Resources */,
 				B4B3CC79200C449500C63BAC /* Assets.xcassets in Resources */,
+				B4ECD983200D1BBA0013C63C /* Discover.storyboard in Resources */,
+				B4ECD988200D1C270013C63C /* Profile.storyboard in Resources */,
 				B4B3CC77200C449500C63BAC /* Main.storyboard in Resources */,
+				B4ECD985200D1BF60013C63C /* Activity.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,6 +254,22 @@
 				B4B3CC7B200C449500C63BAC /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		B4ECD97F200D1B7E0013C63C /* Camera.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B4ECD980200D1B7E0013C63C /* Base */,
+			);
+			name = Camera.storyboard;
+			sourceTree = "<group>";
+		};
+		B4ECD986200D1C270013C63C /* Profile.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B4ECD987200D1C270013C63C /* Base */,
+			);
+			name = Profile.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
