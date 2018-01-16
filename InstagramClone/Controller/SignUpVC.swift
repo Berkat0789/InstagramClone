@@ -9,16 +9,18 @@
 import UIKit
 import Firebase
 class SignUpVC: UIViewController {
+//--Outlets
     @IBOutlet weak var usernameTextfield: AuthTextfield!
     @IBOutlet weak var emailTextField: AuthTextfield!
     @IBOutlet weak var passWordTextField: AuthTextfield!
+    @IBOutlet weak var userProfile: RoundedImage!
     
-    
+//--Variables and Arrrays
+    var selectedProfileImage: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        addTaptoImageView()
     }
 //--Actions
     @IBAction func alreadyHavePressed(_ sender: Any) {
@@ -43,5 +45,31 @@ class SignUpVC: UIViewController {
             }
         }
     }//end sign up pressed
+    
+//--Gestures and animations
+    func addTaptoImageView() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tapToSelectImage(_:)))
+        self.userProfile.addGestureRecognizer(tap)
+        self.userProfile.isUserInteractionEnabled = true
+    }
+    
+//--Selectors
+    @objc func tapToSelectImage(_ recon: UITapGestureRecognizer) {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        present(imagePicker, animated: true, completion: nil)
+    }
+
+}//------end controller
+//Need an extensiton for getting images from image library for firebase storage
+
+extension SignUpVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        print(info)
+        guard let image = info["UIImagePickerControllerOriginalImage"] as? UIImage else {return}
+        selectedProfileImage = image
+        userProfile.image = image
+        dismiss(animated: true, completion: nil)
+    }
     
 }

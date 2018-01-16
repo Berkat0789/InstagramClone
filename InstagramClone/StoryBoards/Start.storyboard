@@ -122,7 +122,7 @@
                                     <action selector="alreadyHavePressed:" destination="QMk-r2-j8g" eventType="touchUpInside" id="g5O-6G-ubg"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_profile" translatesAutoresizingMaskIntoConstraints="NO" id="iwg-jA-gZE" customClass="RoundedImage" customModule="InstagramClone" customModuleProvider="target">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_profile" translatesAutoresizingMaskIntoConstraints="NO" id="iwg-jA-gZE" customClass="RoundedImage" customModule="InstagramClone" customModuleProvider="target">
                                 <rect key="frame" x="147" y="60" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="pCX-wO-vCF"/>
@@ -195,6 +195,7 @@
                     <connections>
                         <outlet property="emailTextField" destination="Sa7-Aj-6bv" id="JWr-bJ-FOP"/>
                         <outlet property="passWordTextField" destination="6is-GN-lfS" id="WE4-qE-oaW"/>
+                        <outlet property="userProfile" destination="iwg-jA-gZE" id="pyN-l8-D4V"/>
                         <outlet property="usernameTextfield" destination="6wZ-6G-XUX" id="H0A-pp-FjI"/>
                     </connections>
                 </viewController>
