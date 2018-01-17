@@ -18,8 +18,16 @@ class LoginVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
      addTaptodismissKetyboard()
-
+    }//--end view did load
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if Auth.auth().currentUser != nil {
+            self.performSegue(withIdentifier: "toHomeVC", sender: nil)
+        }
     }
+    
 //--Actions
     @IBAction func LoginPressed(_ sender: Any) {
         guard let email = emailtextField.text, emailtextField.text != "" else {return}

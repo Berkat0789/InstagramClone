@@ -7,28 +7,28 @@
 //
 
 import UIKit
+import Firebase
 
 class HomeVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    }//--End view did load
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-}
+//--Actions
+    
+    @IBAction func LogoutPressed(_ sender: Any) {
+        do {
+            try Auth.auth().signOut()
+        }catch let error as NSError {
+            print(error)
+        }
+        
+        let storyboard = UIStoryboard(name: "Start", bundle: nil)
+        let LoginVC = storyboard.instantiateViewController(withIdentifier: "LoginVC")
+        present(LoginVC, animated: true, completion: nil)
+        
+    }//end logout pressed
+    
+}//End controller
