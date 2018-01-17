@@ -55,7 +55,7 @@
                                             <color key="titleColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <segue destination="BWo-dT-gN9" kind="presentation" id="yGo-Kq-9jD"/>
+                                            <action selector="LoginPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xhl-Hz-19B"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -94,8 +94,10 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="LoginButton" destination="cLW-Uh-4ld" id="VuP-nV-ROZ"/>
                         <outlet property="emailtextField" destination="AQ4-Ms-weG" id="l10-yW-shI"/>
                         <outlet property="passwordTextField" destination="7hq-Vf-vht" id="OYl-05-3dJ"/>
+                        <segue destination="BWo-dT-gN9" kind="presentation" identifier="toHomeVC" id="ZY6-Qx-Aqb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -197,6 +199,7 @@
                         <outlet property="passWordTextField" destination="6is-GN-lfS" id="WE4-qE-oaW"/>
                         <outlet property="userProfile" destination="iwg-jA-gZE" id="pyN-l8-D4V"/>
                         <outlet property="usernameTextfield" destination="6wZ-6G-XUX" id="H0A-pp-FjI"/>
+                        <segue destination="BWo-dT-gN9" kind="presentation" identifier="toHomeVC" id="GjM-c7-824"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DdT-f4-YNx" sceneMemberID="firstResponder"/>
@@ -215,4 +218,7 @@
     <resources>
         <image name="user_profile" width="400" height="400"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="GjM-c7-824"/>
+    </inferredMetricsTieBreakers>
 </document>

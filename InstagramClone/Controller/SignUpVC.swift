@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FirebaseStorage
 class SignUpVC: UIViewController {
 //--Outlets
     @IBOutlet weak var usernameTextfield: AuthTextfield!
@@ -16,6 +17,7 @@ class SignUpVC: UIViewController {
     @IBOutlet weak var userProfile: RoundedImage!
     
 //--Variables and Arrrays
+    //optional incase user doesnt add photo 
     var selectedProfileImage: UIImage?
     
     override func viewDidLoad() {
@@ -36,9 +38,9 @@ class SignUpVC: UIViewController {
                 print(error!.localizedDescription)
                 return
             }else {
-                DataService.instance.adduserToFirebase(uid: (user?.uid)!, username: username, email: email, userAdded: { (Done) in
-                    if Done {
-                        //perform segue
+                DataService.instance.adduserToFirebase(uid: userID!, username: username, email: email, profileImg: self.selectedProfileImage!, userAdded: { (Good) in
+                    if Good {
+                        self.performSegue(withIdentifier: "toHomeVC", sender: nil)
                     }
                 })
                 

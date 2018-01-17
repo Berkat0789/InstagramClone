@@ -7,15 +7,41 @@
 //
 
 import UIKit
+import Firebase
 
 class LoginVC: UIViewController {
 //--Outlets
     @IBOutlet weak var emailtextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var LoginButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+     addTaptodismissKetyboard()
 
     }
-
-}
+//--Actions
+    @IBAction func LoginPressed(_ sender: Any) {
+        guard let email = emailtextField.text, emailtextField.text != "" else {return}
+        guard let password = passwordTextField.text, passwordTextField.text != "" else {return}
+        
+        Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
+            if error != nil {
+                print(error!.localizedDescription)
+            } else {
+                self.performSegue(withIdentifier: "toHomeVC", sender: nil)
+            }
+        }
+        
+    }
+//--Gestures and Animations
+    func addTaptodismissKetyboard() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismisKeyboard(_:)))
+        self.view.addGestureRecognizer(tap)
+    }
+//--Selectors
+    @objc func dismisKeyboard(_ recon: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
+    
+}//--End controller
