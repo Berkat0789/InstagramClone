@@ -54,6 +54,9 @@ class SignUpVC: UIViewController {
         self.userProfile.addGestureRecognizer(tap)
         self.userProfile.isUserInteractionEnabled = true
     }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
     
 //--Selectors
     @objc func tapToSelectImage(_ recon: UITapGestureRecognizer) {

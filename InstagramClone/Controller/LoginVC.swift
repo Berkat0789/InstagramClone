@@ -47,6 +47,9 @@ class LoginVC: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismisKeyboard(_:)))
         self.view.addGestureRecognizer(tap)
     }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
 //--Selectors
     @objc func dismisKeyboard(_ recon: UITapGestureRecognizer) {
         view.endEditing(true)
