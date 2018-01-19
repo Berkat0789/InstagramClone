@@ -35,14 +35,17 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     
 //--Actions
     @IBAction func sharepressed(_ sender: Any) {
-        guard let caption = postCaption.text, postCaption.text != "" else {
+        guard let caption = postCaption.text, postCaption.text != "" || postCaption.text != "Add Caption...."  else {
             ProgressHUD.showError("Caption cannot be blank")
             return
         }
         DataService.instance.AddPostToDB(userID: (Auth.auth().currentUser?.uid)!, postImage: selectedImage!, postCaption: caption) { (Success) in
             if Success {
                 ProgressHUD.showSuccess("Post Added")
-                //perform segue to some page
+                self.postCaption.text = "Add Caption...."
+                self.postImage.image = UIImage(named: "user_profile")
+                self.tabBarController?.selectedIndex = 0
+                
             } else {
                 ProgressHUD.showError("Post Was not added")
             }
