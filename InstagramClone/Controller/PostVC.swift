@@ -16,12 +16,17 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     @IBOutlet weak var shareButton: UIButton!
 //--variables and arrays
     var selectedImage : UIImage?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         addTaptoImageView()
         postCaption.delegate = self
 
     }//--End view did load
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        handlePost()
+    }
 //--Protocol Functions
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         guard let image = info["UIImagePickerControllerOriginalImage"] as? UIImage else {return}
@@ -35,7 +40,7 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     
 //--Actions
     @IBAction func sharepressed(_ sender: Any) {
-        guard let caption = postCaption.text, postCaption.text != "" || postCaption.text != "Add Caption...."  else {
+        guard let caption = postCaption.text else {
             ProgressHUD.showError("Caption cannot be blank")
             return
         }
@@ -44,6 +49,7 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
                 ProgressHUD.showSuccess("Post Added")
                 self.postCaption.text = "Add Caption...."
                 self.postImage.image = UIImage(named: "user_profile")
+                self.selectedImage = nil
                 self.tabBarController?.selectedIndex = 0
                 
             } else {
@@ -67,6 +73,17 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         let imageFolder = UIImagePickerController()
         imageFolder.delegate  = self
         present(imageFolder, animated: true, completion: nil)
+    }
+//--View function and handlers
+    func handlePost () {
+        if selectedImage == nil {
+            shareButton.isEnabled = false
+            self.shareButton.backgroundColor = #colorLiteral(red: 0.7540688515, green: 0.7540867925, blue: 0.7540771365, alpha: 1)
+        }else {
+            shareButton.isEnabled = true
+            self.shareButton.backgroundColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
+
+        }
     }
     
     
