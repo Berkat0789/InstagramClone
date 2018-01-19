@@ -56,6 +56,25 @@ class DataService {
         completed(true)
         
     }//end add post
+//--Get posts
+    
+    func getAllPosts(completed: @escaping (_ post: [Post]) -> ()) {
+        var AllPost = [Post]()
+        DB_REFERENCE_posts.observeSingleEvent(of: .value) { (postSnapshot) in
+           guard let postSnapshot = postSnapshot.children.allObjects as? [DataSnapshot] else {return}
+            
+            for post in postSnapshot {
+                let caption = post.childSnapshot(forPath: "postCaption").value as! String
+                let postURL = post.childSnapshot(forPath: "postImage").value as! String
+                
+                let posts = Post(postUrL: postURL, postCaption: caption)
+                AllPost.append(posts)
+            }
+            completed(AllPost)
+
+        }
+
+    }//--end get all posts
 
 
     

@@ -8,13 +8,42 @@
 
 import UIKit
 import Firebase
+import SDWebImage
 
-class HomeVC: UIViewController {
 
+class HomeVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+//--Outlets
+    @IBOutlet weak var tableView: UITableView!
+//--Arrays and Variables
+    var PostList = [Post]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.estimatedRowHeight = 500
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
+        DataService.instance.getAllPosts { (Posts) in
+            self.PostList = Posts.reversed()
+            self.tableView.reloadData()
+            
+        }
         
     }//--End view did load
+//--Protocol Function
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return PostList.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as? postCell else {return UITableViewCell()}
+        let Post = PostList[indexPath.row]
+        cell.updateCell(post: Post)
+        return cell
+    }
     
 //--Actions
     

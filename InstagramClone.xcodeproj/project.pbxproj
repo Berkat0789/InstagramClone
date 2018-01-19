@@ -12,6 +12,8 @@
 		B4B3CC77200C449500C63BAC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4B3CC75200C449500C63BAC /* Main.storyboard */; };
 		B4B3CC79200C449500C63BAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4B3CC78200C449500C63BAC /* Assets.xcassets */; };
 		B4B3CC7C200C449500C63BAC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4B3CC7A200C449500C63BAC /* LaunchScreen.storyboard */; };
+		B4B73C262012488300CD920E /* postCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B73C252012488300CD920E /* postCell.swift */; };
+		B4B73C2820124CF700CD920E /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B73C2720124CF700CD920E /* Post.swift */; };
 		B4B7F00C2010E65D00597B06 /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B4B7F00A2010E65C00597B06 /* ProgressHUD.bundle */; };
 		B4B7F00D2010E65D00597B06 /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = B4B7F00B2010E65C00597B06 /* ProgressHUD.m */; };
 		B4ECD96E200CD5E60013C63C /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4ECD96D200CD5E60013C63C /* LoginVC.swift */; };
@@ -45,6 +47,8 @@
 		B4B3CC78200C449500C63BAC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B4B3CC7B200C449500C63BAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B4B3CC7D200C449500C63BAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B4B73C252012488300CD920E /* postCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = postCell.swift; sourceTree = "<group>"; };
+		B4B73C2720124CF700CD920E /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		B4B7F0082010E65B00597B06 /* InstagramClone-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "InstagramClone-Bridging-Header.h"; sourceTree = "<group>"; };
 		B4B7F0092010E65C00597B06 /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
 		B4B7F00A2010E65C00597B06 /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
@@ -153,6 +157,7 @@
 			children = (
 				B4ECD98A200D1F230013C63C /* AuthTextfield.swift */,
 				B4ECD98C200D20EC0013C63C /* RoundedImage.swift */,
+				B4B73C252012488300CD920E /* postCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -160,6 +165,7 @@
 		B4B3CC85200C44D000C63BAC /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B4B73C2720124CF700CD920E /* Post.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -327,6 +333,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-InstagramClone/Pods-InstagramClone-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -334,6 +341,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -355,8 +363,10 @@
 				B4ECD974200CE0060013C63C /* DiscoverVC.swift in Sources */,
 				B4ECD972200CDFF60013C63C /* HomeVC.swift in Sources */,
 				B4ECD97A200CE0260013C63C /* ProfileVC.swift in Sources */,
+				B4B73C262012488300CD920E /* postCell.swift in Sources */,
 				B4ECD991200D2DB40013C63C /* DataService.swift in Sources */,
 				B4ECD970200CD5FC0013C63C /* SignUpVC.swift in Sources */,
+				B4B73C2820124CF700CD920E /* Post.swift in Sources */,
 				B4ECD98B200D1F230013C63C /* AuthTextfield.swift in Sources */,
 				B4ECD98D200D20EC0013C63C /* RoundedImage.swift in Sources */,
 				B4ECD978200CE01C0013C63C /* ActivityVC.swift in Sources */,
