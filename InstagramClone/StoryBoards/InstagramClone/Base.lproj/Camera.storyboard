@@ -20,14 +20,14 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dxw-64-BcP">
                                 <rect key="frame" x="0.0" y="64" width="375" height="128"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_profile" translatesAutoresizingMaskIntoConstraints="NO" id="vkJ-cK-VqJ">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="addImage" translatesAutoresizingMaskIntoConstraints="NO" id="vkJ-cK-VqJ">
                                         <rect key="frame" x="8" y="8" width="112" height="112"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="112" id="Dcz-px-2Hi"/>
                                             <constraint firstAttribute="width" constant="112" id="VZd-C9-ec7"/>
                                         </constraints>
                                     </imageView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="TYH-kh-GlG">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="add caption here...." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="TYH-kh-GlG">
                                         <rect key="frame" x="128" y="8" width="239" height="112"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="textColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -73,8 +73,16 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="323-Tm-rVt"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Camera" id="1yI-Oy-ebM"/>
+                    <navigationItem key="navigationItem" title="Camera" id="1yI-Oy-ebM">
+                        <barButtonItem key="leftBarButtonItem" title="Clear" id="dOr-hL-Yjm">
+                            <color key="tintColor" red="0.50196081400000003" green="0.0" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="clearButtonPressed:" destination="nwZ-U9-Ljq" id="ps6-Qb-Sbu"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="clearButton" destination="dOr-hL-Yjm" id="Nfm-rF-mAD"/>
                         <outlet property="postCaption" destination="TYH-kh-GlG" id="LUc-ic-oJz"/>
                         <outlet property="postImage" destination="vkJ-cK-VqJ" id="8Q1-bC-Pnz"/>
                         <outlet property="shareButton" destination="Ewe-Cy-l0Y" id="tuc-fH-Job"/>
@@ -108,6 +116,6 @@
     </scenes>
     <resources>
         <image name="Photo" width="22" height="23"/>
-        <image name="user_profile" width="400" height="400"/>
+        <image name="addImage" width="1600" height="1600"/>
     </resources>
 </document>

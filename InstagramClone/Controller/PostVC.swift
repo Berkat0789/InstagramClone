@@ -14,6 +14,8 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     @IBOutlet weak var postImage: UIImageView!
     @IBOutlet weak var postCaption: UITextView!
     @IBOutlet weak var shareButton: UIButton!
+    @IBOutlet weak var clearButton: UIBarButtonItem!
+    
 //--variables and arrays
     var selectedImage : UIImage?
     
@@ -21,6 +23,8 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         super.viewDidLoad()
         addTaptoImageView()
         postCaption.delegate = self
+        clearButton.isEnabled = false
+
 
     }//--End view did load
     override func viewWillAppear(_ animated: Bool) {
@@ -37,21 +41,21 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     func textViewDidBeginEditing(_ textView: UITextView) {
         postCaption.text = ""
     }
-    
 //--Actions
+    @IBAction func clearButtonPressed(_ sender: Any) {
+        clearPostInput()
+        handlePost()
+
+    }
+    
+    
     @IBAction func sharepressed(_ sender: Any) {
-        guard let caption = postCaption.text else {
-            ProgressHUD.showError("Caption cannot be blank")
-            return
-        }
+        guard let caption = postCaption.text else {return}
         DataService.instance.AddPostToDB(userID: (Auth.auth().currentUser?.uid)!, postImage: selectedImage!, postCaption: caption) { (Success) in
             if Success {
                 ProgressHUD.showSuccess("Post Added")
-                self.postCaption.text = "Add Caption...."
-                self.postImage.image = UIImage(named: "user_profile")
-                self.selectedImage = nil
+                self.clearPostInput()
                 self.tabBarController?.selectedIndex = 0
-                
             } else {
                 ProgressHUD.showError("Post Was not added")
             }
@@ -71,21 +75,26 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
 //--Selectors
     @objc func tapToopenImageSelection(_ recon: UITapGestureRecognizer) {
         let imageFolder = UIImagePickerController()
-        imageFolder.delegate  = self
+        imageFolder.delegate = self
         present(imageFolder, animated: true, completion: nil)
     }
 //--View function and handlers
-    func handlePost () {
-        if selectedImage == nil {
-            shareButton.isEnabled = false
-            self.shareButton.backgroundColor = #colorLiteral(red: 0.7540688515, green: 0.7540867925, blue: 0.7540771365, alpha: 1)
-        }else {
-            shareButton.isEnabled = true
-            self.shareButton.backgroundColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
-
+    func handlePost() {
+        if selectedImage != nil {
+            clearButton.isEnabled = true
+            shareButton.isHidden = false
+            shareButton.backgroundColor = #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)
+        } else {
+            clearButton.isEnabled = false
+            shareButton.isHidden = true
+            shareButton.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         }
     }
-    
+    func clearPostInput() {
+        self.postCaption.text = "add caption here...."
+        self.postImage.image = UIImage(named: "addImage")
+        self.selectedImage = nil
+    }
     
     
 }//end class
