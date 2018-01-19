@@ -52,7 +52,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
     
 //--Gestures and animations
     func addTaptoImageView() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(tapToSelectImage(_:)))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.tapToSelectImage(_:)))
         self.userProfile.addGestureRecognizer(tap)
         self.userProfile.isUserInteractionEnabled = true
     }

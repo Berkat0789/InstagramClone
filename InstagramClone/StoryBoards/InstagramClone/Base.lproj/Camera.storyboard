@@ -27,10 +27,10 @@
                                             <constraint firstAttribute="width" constant="112" id="VZd-C9-ec7"/>
                                         </constraints>
                                     </imageView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="TYH-kh-GlG">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="enter caption..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="TYH-kh-GlG">
                                         <rect key="frame" x="128" y="8" width="239" height="112"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <color key="textColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
@@ -57,6 +57,9 @@
                                 <state key="normal" title="Share">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="sharepressed:" destination="nwZ-U9-Ljq" eventType="touchUpInside" id="SDm-Fo-dXA"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.95549887418746948" green="0.95622259378433228" blue="0.95561093091964722" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -71,6 +74,11 @@
                         <viewLayoutGuide key="safeArea" id="323-Tm-rVt"/>
                     </view>
                     <navigationItem key="navigationItem" title="Camera" id="1yI-Oy-ebM"/>
+                    <connections>
+                        <outlet property="postCaption" destination="TYH-kh-GlG" id="LUc-ic-oJz"/>
+                        <outlet property="postImage" destination="vkJ-cK-VqJ" id="8Q1-bC-Pnz"/>
+                        <outlet property="shareButton" destination="Ewe-Cy-l0Y" id="tuc-fH-Job"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4P0-iz-sh0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -7,30 +7,65 @@
 //
 
 import UIKit
+import Firebase
 
-class PostVC: UIViewController {
-
+class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate {
+//--Outlets
+    @IBOutlet weak var postImage: UIImageView!
+    @IBOutlet weak var postCaption: UITextView!
+    @IBOutlet weak var shareButton: UIButton!
+//--variables and arrays
+    var selectedImage : UIImage?
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        addTaptoImageView()
+        postCaption.delegate = self
 
-
+    }//--End view did load
+//--Protocol Functions
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        guard let image = info["UIImagePickerControllerOriginalImage"] as? UIImage else {return}
+        postImage.image = image
+        selectedImage = image
+        dismiss(animated: true, completion: nil)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        postCaption.text = ""
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+//--Actions
+    @IBAction func sharepressed(_ sender: Any) {
+        guard let caption = postCaption.text, postCaption.text != "" else {
+            ProgressHUD.showError("Caption cannot be blank")
+            return
+        }
+        DataService.instance.AddPostToDB(userID: (Auth.auth().currentUser?.uid)!, postImage: selectedImage!, postCaption: caption) { (Success) in
+            if Success {
+                ProgressHUD.showSuccess("Post Added")
+                //perform segue to some page
+            } else {
+                ProgressHUD.showError("Post Was not added")
+            }
+        }
+        
     }
-    */
-
-}
+//-gestures and animations
+    
+    func addTaptoImageView() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.tapToopenImageSelection(_:)))
+        self.postImage.addGestureRecognizer(tap)
+        self.postImage.isUserInteractionEnabled = true
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+//--Selectors
+    @objc func tapToopenImageSelection(_ recon: UITapGestureRecognizer) {
+        let imageFolder = UIImagePickerController()
+        imageFolder.delegate  = self
+        present(imageFolder, animated: true, completion: nil)
+    }
+    
+    
+    
+}//end class
