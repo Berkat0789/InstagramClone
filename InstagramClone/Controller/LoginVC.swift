@@ -34,9 +34,12 @@ class LoginVC: UIViewController {
         guard let password = passwordTextField.text, passwordTextField.text != "" else {return}
         
         Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
+            ProgressHUD.show("working...", interaction: false)
             if error != nil {
-                print(error!.localizedDescription)
+//                print(error!.localizedDescription)
+                ProgressHUD.showError("\(error!)")
             } else {
+                ProgressHUD.showSuccess("Welcome Back to The Knight Market")
                 self.performSegue(withIdentifier: "toHomeVC", sender: nil)
             }
         }

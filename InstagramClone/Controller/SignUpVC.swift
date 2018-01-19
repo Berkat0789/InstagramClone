@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseStorage
-class SignUpVC: UIViewController {
+class SignUpVC: UIViewController, UITextFieldDelegate {
 //--Outlets
     @IBOutlet weak var usernameTextfield: AuthTextfield!
     @IBOutlet weak var emailTextField: AuthTextfield!
@@ -35,13 +35,15 @@ class SignUpVC: UIViewController {
         
         Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
             if error != nil {
-                print(error!.localizedDescription)
+                ProgressHUD.showError("\(error!)")
                 return
             }else {
                 DataService.instance.adduserToFirebase(uid: userID!, username: username, email: email, profileImg: self.selectedProfileImage!, userAdded: { (Good) in
                     if Good {
+                        ProgressHUD.showSuccess("Welcome to The Knight Market")
                         self.performSegue(withIdentifier: "toHomeVC", sender: nil)
-                    }
+                    }else {
+                        ProgressHUD.showError("profile cannot be blank")                    }
                 })
                 
             }
@@ -57,7 +59,6 @@ class SignUpVC: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
-    
 //--Selectors
     @objc func tapToSelectImage(_ recon: UITapGestureRecognizer) {
         let imagePicker = UIImagePickerController()
