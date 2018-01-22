@@ -79,22 +79,17 @@ class DataService {
     
 //--Get user Data
     
-    func getUserData(userID: String, completed: @escaping (_ status: Bool) -> ()) {
-        var usersList = [User]()
+    func getUserData(userID: String, completed: @escaping (_ userName: String, _ profileURl: String)-> ()) {
         DB_REFERENCE_users.observeSingleEvent(of: .value) { (DataSnapShot) in
           guard let userSnapShot = DataSnapShot.children.allObjects as? [DataSnapshot] else {return}
             
             for user in userSnapShot {
-                let userName = user.childSnapshot(forPath: "username").value as? String
-                let profileImageURL = user.childSnapshot(forPath: "profileImg").value as? String
-                let email = user.childSnapshot(forPath: "email").value as? String
-                
-                let users = User(email: email!, username: userName!, profileImg: profileImageURL!)
-                usersList.append(users)
+                if user.key == userID {
+                    completed(user.childSnapshot(forPath: "username").value as! String, user.childSnapshot(forPath: "profileImg").value as! String)
+                }
             }
         }
-        completed(true)
-        
+///compp
     }
 
 

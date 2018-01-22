@@ -21,6 +21,8 @@ class postCell: UITableViewCell {
     @IBOutlet weak var comment: UILabel!
     @IBOutlet weak var postCaption: UILabel!
     
+
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -53,10 +55,13 @@ class postCell: UITableViewCell {
     
     
     func getUserData() {
-
+        guard let uid = post?.uid else {return}
+        DataService.instance.getUserData(userID: uid) { (userName, profileImage) in
+            self.userName.text = userName
+            self.profileImage.sd_setImage(with: URL(string: profileImage), placeholderImage: UIImage(named: "photo2"))
+        }
         
-        
-    }//---end get user dada
+}//---end get user dada
    
 
 }
