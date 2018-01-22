@@ -16,6 +16,7 @@ class HomeVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
 //--Arrays and Variables
     var PostList = [Post]()
+    var user: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +28,6 @@ class HomeVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         DataService.instance.getAllPosts { (Posts) in
             self.PostList = Posts.reversed()
             self.tableView.reloadData()
-            
         }
         
     }//--End view did load
@@ -41,7 +41,7 @@ class HomeVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as? postCell else {return UITableViewCell()}
         let Post = PostList[indexPath.row]
-        cell.updateCell(post: Post)
+        cell.post = Post
         return cell
     }
     

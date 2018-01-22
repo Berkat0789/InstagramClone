@@ -52,8 +52,8 @@ class DataService {
                 let image = metaData?.downloadURL()?.absoluteString
                 self.DB_REFERENCE_posts.childByAutoId().updateChildValues(["postImage": image!, "postCaption" :postCaption, "userID": userID])
             }
+            completed(true)
         }
-        completed(true)
         
     }//end add post
 //--Get posts
@@ -66,15 +66,36 @@ class DataService {
             for post in postSnapshot {
                 let caption = post.childSnapshot(forPath: "postCaption").value as! String
                 let postURL = post.childSnapshot(forPath: "postImage").value as! String
+                let userId = post.childSnapshot(forPath: "userID").value as! String
                 
-                let posts = Post(postUrL: postURL, postCaption: caption)
+                let posts = Post(uid: userId, postUrL: postURL, postCaption: caption)
                 AllPost.append(posts)
             }
             completed(AllPost)
-
         }
 
+
     }//--end get all posts
+    
+//--Get user Data
+    
+    func getUserData(userID: String, completed: @escaping (_ status: Bool) -> ()) {
+        var usersList = [User]()
+        DB_REFERENCE_users.observeSingleEvent(of: .value) { (DataSnapShot) in
+          guard let userSnapShot = DataSnapShot.children.allObjects as? [DataSnapshot] else {return}
+            
+            for user in userSnapShot {
+                let userName = user.childSnapshot(forPath: "username").value as? String
+                let profileImageURL = user.childSnapshot(forPath: "profileImg").value as? String
+                let email = user.childSnapshot(forPath: "email").value as? String
+                
+                let users = User(email: email!, username: userName!, profileImg: profileImageURL!)
+                usersList.append(users)
+            }
+        }
+        completed(true)
+        
+    }
 
 
     

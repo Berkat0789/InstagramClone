@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 import SDWebImage
 
 class postCell: UITableViewCell {
@@ -31,14 +32,31 @@ class postCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func updateCell(post: Post) {
-        guard let imageString = post.postURL else {return}
-//        let imageURl = URL(string: imageString)
-        postImage.sd_setImage(with: URL(string: imageString), placeholderImage: UIImage(named: "photo2"))
+    var post: Post? {
+        didSet {
+            updateCell()
+        }
+    }
 
-        postCaption.text = post.postCaption
+    
+    
+    func updateCell() {
+        guard let imageString = post?.postURL else {return}
+        postImage.sd_setImage(with: URL(string: imageString), placeholderImage: UIImage(named: "photo2"))
+        postCaption.text = post?.postCaption
         userName.text = "Berkat Bhatti"
         profileImage.image = UIImage(named: "photo2")
-    }
+        
+        getUserData()
+       
+    }//end update cell
+    
+    
+    func getUserData() {
+
+        
+        
+    }//---end get user dada
+   
 
 }
