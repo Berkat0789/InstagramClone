@@ -24,13 +24,19 @@ class HomeVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         tableView.dataSource = self
         tableView.estimatedRowHeight = 500
         tableView.rowHeight = UITableViewAutomaticDimension
+    }//--End view did load
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        DataService.instance.getAllPosts { (Posts) in
-            self.PostList = Posts.reversed()
-            self.tableView.reloadData()
+        DataService.instance.DB_REFERENCE_posts.observeSingleEvent(of: .value) { (postSnapshop) in
+            DataService.instance.getAllPosts { (Posts) in
+                self.PostList = Posts.reversed()
+                self.tableView.reloadData()
+            }
         }
         
-    }//--End view did load
+    }
 //--Protocol Function
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
