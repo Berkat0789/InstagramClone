@@ -34,6 +34,9 @@
 		B4ECD98D200D20EC0013C63C /* RoundedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4ECD98C200D20EC0013C63C /* RoundedImage.swift */; };
 		B4ECD98F200D25570013C63C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B4ECD98E200D25560013C63C /* GoogleService-Info.plist */; };
 		B4ECD991200D2DB40013C63C /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4ECD990200D2DB40013C63C /* DataService.swift */; };
+		B4FF30CF2020AFCF00770BF4 /* commentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FF30CE2020AFCF00770BF4 /* commentVC.swift */; };
+		B4FF30D12020B36C00770BF4 /* commentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FF30D02020B36C00770BF4 /* commentCell.swift */; };
+		B4FF30D32020B43300770BF4 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FF30D22020B43300770BF4 /* Comment.swift */; };
 		F2EB41C74700AF1B99964F05 /* Pods_InstagramClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98CD04F95D4C9247B59D1785 /* Pods_InstagramClone.framework */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +75,9 @@
 		B4ECD98C200D20EC0013C63C /* RoundedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedImage.swift; sourceTree = "<group>"; };
 		B4ECD98E200D25560013C63C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B4ECD990200D2DB40013C63C /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		B4FF30CE2020AFCF00770BF4 /* commentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = commentVC.swift; sourceTree = "<group>"; };
+		B4FF30D02020B36C00770BF4 /* commentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = commentCell.swift; sourceTree = "<group>"; };
+		B4FF30D22020B43300770BF4 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +156,7 @@
 				B4ECD975200CE0110013C63C /* PostVC.swift */,
 				B4ECD977200CE01C0013C63C /* ActivityVC.swift */,
 				B4ECD979200CE0260013C63C /* ProfileVC.swift */,
+				B4FF30CE2020AFCF00770BF4 /* commentVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -160,6 +167,7 @@
 				B4ECD98A200D1F230013C63C /* AuthTextfield.swift */,
 				B4ECD98C200D20EC0013C63C /* RoundedImage.swift */,
 				B4B73C252012488300CD920E /* postCell.swift */,
+				B4FF30D02020B36C00770BF4 /* commentCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -169,6 +177,7 @@
 			children = (
 				B4B73C2720124CF700CD920E /* Post.swift */,
 				B46A2C2B2014E56100CC0F25 /* User.swift */,
+				B4FF30D22020B43300770BF4 /* Comment.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -363,10 +372,12 @@
 				B4ECD976200CE0110013C63C /* PostVC.swift in Sources */,
 				B4B7F00D2010E65D00597B06 /* ProgressHUD.m in Sources */,
 				B4ECD96E200CD5E60013C63C /* LoginVC.swift in Sources */,
+				B4FF30D12020B36C00770BF4 /* commentCell.swift in Sources */,
 				B4ECD974200CE0060013C63C /* DiscoverVC.swift in Sources */,
 				B46A2C2C2014E56100CC0F25 /* User.swift in Sources */,
 				B4ECD972200CDFF60013C63C /* HomeVC.swift in Sources */,
 				B4ECD97A200CE0260013C63C /* ProfileVC.swift in Sources */,
+				B4FF30CF2020AFCF00770BF4 /* commentVC.swift in Sources */,
 				B4B73C262012488300CD920E /* postCell.swift in Sources */,
 				B4ECD991200D2DB40013C63C /* DataService.swift in Sources */,
 				B4ECD970200CD5FC0013C63C /* SignUpVC.swift in Sources */,
@@ -374,6 +385,7 @@
 				B4ECD98B200D1F230013C63C /* AuthTextfield.swift in Sources */,
 				B4ECD98D200D20EC0013C63C /* RoundedImage.swift in Sources */,
 				B4ECD978200CE01C0013C63C /* ActivityVC.swift in Sources */,
+				B4FF30D32020B43300770BF4 /* Comment.swift in Sources */,
 				B4B3CC72200C449500C63BAC /* AppDelegate.swift in Sources */,
 				B4A40EE6200E8AFA008E1FB7 /* Constants.swift in Sources */,
 			);
@@ -531,7 +543,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 92BBSY6F64;
+				DEVELOPMENT_TEAM = ADP8WRQE72;
 				INFOPLIST_FILE = InstagramClone/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -551,7 +563,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 92BBSY6F64;
+				DEVELOPMENT_TEAM = ADP8WRQE72;
 				INFOPLIST_FILE = InstagramClone/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

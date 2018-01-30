@@ -53,6 +53,7 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         guard let caption = postCaption.text else {return}
         DataService.instance.AddPostToDB(userID: (Auth.auth().currentUser?.uid)!, postImage: selectedImage!, postCaption: caption) { (Success) in
             if Success {
+                ProgressHUD.show("Working", interaction: false)
                 ProgressHUD.showSuccess("Post Added")
                 self.clearPostInput()
                 self.tabBarController?.selectedIndex = 0
