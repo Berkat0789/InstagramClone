@@ -18,6 +18,10 @@ class DataService {
     private(set) public var DB_REFERENCE = DB_Reference
     private(set) public var DB_REFERENCE_users = DB_Reference.child("user")
     private(set) public var DB_REFERENCE_posts = DB_Reference.child("post")
+    private(set) public var DB_REFERENCE_comments = DB_Reference.child("comments")
+    private(set) public var DB_REFERENCE_Postcomments = DB_Reference.child("post-comments")
+
+
 
 
 //--Storage Referemce
@@ -25,20 +29,20 @@ class DataService {
     private(set) public var DB_Storage_REF_profileImage = DB_StorageRef.child("profileImages")
     private(set) public var DB_Storage_REF_PostImage = DB_StorageRef.child("postimages")
 
+
     
     func adduserToFirebase(uid: String, username: String, email: String, profileImg: UIImage, userAdded: @escaping (_ status: Bool) -> ()) {
     //--converts all images to jpg format
         let imageData = UIImageJPEGRepresentation(profileImg, 0.1)
-        DB_Storage_REF_profileImage.putData(imageData!, metadata: nil) { (metaData, error) in
+        DataService.instance.DB_Storage_REF_profileImage.putData(imageData!, metadata: nil) { (metaData, error) in
             if error != nil {
-                return
-            } else {
-            //--converts image to UrL
-                let profilePicURL = metaData?.downloadURL()?.absoluteString
-                self.DB_REFERENCE_users.child(uid).updateChildValues(["email": email, "username": username, "profileImg" : profilePicURL!])
+                print(error!.localizedDescription)
+            }else {
+                let imageURL = metaData?.downloadURL()?.absoluteString
+                DataService.instance.DB_REFERENCE_users.child(uid).updateChildValues(["email": email, "username": username, "profileImage" : imageURL!])
             }
+            userAdded(true)
         }
-        userAdded(true)
     }//--end add user
     
 //--Add post
@@ -89,9 +93,18 @@ class DataService {
                 }
             }
         }
-///compp
+    }//end get user Data
+//func add COmment to Database
+    func addCaptionToFirebase(userId: String, commenttext: String, completed: @escaping (_ statud: Bool) ->()) {
+        DB_REFERENCE_comments.childByAutoId().updateChildValues(["userID": userId, "comment": commenttext])
+        completed(true)
     }
-
+ //Add coment to post 
+func addComenttoPost(postID: String, commentID:String, commentAdded: @escaping (_ status: Bool)-> ()) {
+        DB_REFERENCE_Postcomments.child(postID).child(commentID)
+    }
+    
+   
 
     
 }//--end class

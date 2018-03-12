@@ -9,7 +9,8 @@
 import UIKit
 import Firebase
 import FirebaseStorage
-class SignUpVC: UIViewController, UITextFieldDelegate {
+
+class SignUpVC: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
 //--Outlets
     @IBOutlet weak var usernameTextfield: AuthTextfield!
     @IBOutlet weak var emailTextField: AuthTextfield!
@@ -24,6 +25,14 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         addTaptoImageView()
     }
+//--Protocol funcitons
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else {return}
+        userProfile.image = image
+        selectedProfileImage = image
+        dismiss(animated: true, completion: nil)
+    }
+
 //--Actions
     @IBAction func alreadyHavePressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -34,20 +43,29 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         guard let username = usernameTextfield.text, usernameTextfield.text != "" else {return}
         
         Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
-            if error != nil {
-                ProgressHUD.showError("\(error!)")
-                return
-            }else {
-                DataService.instance.adduserToFirebase(uid: userID!, username: username, email: email, profileImg: self.selectedProfileImage!, userAdded: { (Good) in
-                    if Good {
-                        ProgressHUD.showSuccess("Welcome to The Knight Market")
-                        self.performSegue(withIdentifier: "toHomeVC", sender: nil)
-                    }else {
-                        ProgressHUD.showError("profile cannot be blank")                    }
+            if error != nil  {
+                guard let errorMessage = AuthErrorCode(rawValue: error!._code) else {return}
+                switch errorMessage {
+                case .invalidEmail:
+                    print("Invalid email")
+                case .weakPassword:
+                    print("Weak PAsssword")
+                default:
+                    print("Credantials does not meet requirements")
+                }
+            } else  {
+                DataService.instance.adduserToFirebase(uid: (Auth.auth().currentUser?.uid)!, username: username, email: email, profileImg: self.selectedProfileImage!, userAdded: { (success) in
+                    if success {
+                        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                        let homeVC = storyboard.instantiateViewController(withIdentifier: "HometabBarID")
+                        self.present(homeVC, animated: true, completion: nil)
+                    }
                 })
                 
             }
         }
+        
+        
     }//end sign up pressed
     
 //--Gestures and animations
@@ -67,15 +85,3 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
     }
 
 }//------end controller
-//Need an extensiton for getting images from image library for firebase storage
-
-extension SignUpVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        print(info)
-        guard let image = info["UIImagePickerControllerOriginalImage"] as? UIImage else {return}
-        selectedProfileImage = image
-        userProfile.image = image
-        dismiss(animated: true, completion: nil)
-    }
-    
-}

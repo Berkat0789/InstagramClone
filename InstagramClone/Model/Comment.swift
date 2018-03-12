@@ -12,11 +12,15 @@ class Comment {
     private(set) public var userImageURL: String!
     private(set) public var userName: String!
     private(set) public var Comment: String!
+    private(set) public var senderID: String!
 
-    init(userImageURL: String, name: String, comment: String) {
+    
+
+    init(userImageURL: String, name: String, comment: String, userID: String) {
         self.userImageURL = userImageURL
         self.userName = name
         self.Comment = comment
+        self.senderID = userID
     }
     
 }

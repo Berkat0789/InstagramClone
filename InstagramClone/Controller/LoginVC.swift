@@ -30,9 +30,9 @@ class LoginVC: UIViewController {
     
 //--Actions
     @IBAction func LoginPressed(_ sender: Any) {
+        ProgressHUD.show("loading..", interaction: false)
         guard let email = emailtextField.text, emailtextField.text != "" else {return}
         guard let password = passwordTextField.text, passwordTextField.text != "" else {return}
-        
         Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
             ProgressHUD.show("working...", interaction: false)
             if error != nil {

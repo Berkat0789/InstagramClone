@@ -10,7 +10,7 @@ import UIKit
 import Foundation
 import SDWebImage
 
-class postCell: UITableViewCell {
+class postCell: UITableViewCell, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var postImage: UIImageView!
     @IBOutlet weak var userName: UILabel!
@@ -22,6 +22,7 @@ class postCell: UITableViewCell {
     @IBOutlet weak var postCaption: UILabel!
     
 
+    @IBOutlet weak var commentButton: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -33,6 +34,7 @@ class postCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
     
     var post: Post? {
         didSet {

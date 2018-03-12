@@ -28,15 +28,20 @@ class HomeVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = false
         DataService.instance.DB_REFERENCE_posts.observeSingleEvent(of: .value) { (postSnapshop) in
             DataService.instance.getAllPosts { (Posts) in
                 self.PostList = Posts.reversed()
                 self.tableView.reloadData()
             }
-        }
-        
+        }//end get all post and observe
+    }//end view will appear
+//--Actions
+    @IBAction func commentPressed(_ sender: Any) {
+        performSegue(withIdentifier: "toCommentView", sender: nil)
     }
+    
 //--Protocol Function
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
